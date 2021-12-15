@@ -7,6 +7,7 @@ require('./db');
 var cors = require('cors');
 
 const express = require('express');
+const {Product,MainSlider} = require("./db");
 const app = express();
 
 app.use(cors());
@@ -23,6 +24,18 @@ app.get("/slider_photos", function(req, res){
         .then(data=>{
         res.json(data);
     });
+});
+
+app.get("/products", function(req, res){
+    Product.findAll({
+        where: {
+            is_use: true
+        },
+        raw: true
+    })
+        .then(data=>{
+            res.json(data);
+        });
 });
 
 app.get("/", function(req, res){
