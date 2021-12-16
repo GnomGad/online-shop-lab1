@@ -1,12 +1,12 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
+const connectDb = require('./db/connect');
+require('./db');
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const express = require('express');
-
-const connectDb = require('./db/connect');
-const {Product, MainSlider} = require("./db");
 const productRouter = require('./routes/productRouter.js');
 const sliderPhotoRouter = require('./routes/sliderPhotoRouter.js');
 
